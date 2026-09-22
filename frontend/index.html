@@ -1128,32 +1128,68 @@
     <nav id="sidebar">
       <div class="sidebar-logo">
         <div class="logo-icon">SI</div>
-        <span class="sidebar-logo-text">Smart Invest</span>
+        <div style="display:flex;flex-direction:column">
+          <span class="sidebar-logo-text">Smart Invest</span>
+          <span style="font-size:0.62rem;color:var(--text-secondary);letter-spacing:0.04em">AI Real Estate Platform</span>
+        </div>
       </div>
       <div class="sidebar-nav">
         <div class="sidebar-section-label">Overview</div>
-        <button class="sidebar-link active" data-page="dashboard" onclick="navigate('dashboard')"><span
-            class="nav-icon">📊</span><span class="nav-label">Dashboard</span></button>
-        <div class="sidebar-section-label">Analysis</div>
-        <button class="sidebar-link" data-page="valuation" onclick="navigate('valuation')"><span
-            class="nav-icon">🏡</span><span class="nav-label">Property Valuation</span></button>
-        <button class="sidebar-link" data-page="market" onclick="navigate('market')"><span
-            class="nav-icon">📈</span><span class="nav-label">Market Analysis</span></button>
-        <button class="sidebar-link" data-page="sentiment" onclick="navigate('sentiment')"><span
-            class="nav-icon">🧠</span><span class="nav-label">Sentiment Analysis</span></button>
-        <div class="sidebar-section-label">AI Tools</div>
-        <button class="sidebar-link" data-page="assistant" onclick="navigate('assistant')"><span
-            class="nav-icon">🤖</span><span class="nav-label">AI Assistant</span></button>
-        <button class="sidebar-link" data-page="simulation" onclick="navigate('simulation')"><span
-            class="nav-icon">⚡</span><span class="nav-label">Scenario Simulation</span></button>
-        <div class="sidebar-section-label">Portfolio</div>
-        <button class="sidebar-link" data-page="portfolio" onclick="navigate('portfolio')"><span
-            class="nav-icon">💼</span><span class="nav-label">Portfolio Mgmt</span></button>
-        <button class="sidebar-link" data-page="reports" onclick="navigate('reports')"><span
-            class="nav-icon">📄</span><span class="nav-label">Reports</span></button>
+        <button class="sidebar-link active" data-page="dashboard" onclick="navigate('dashboard')">
+          <span class="nav-icon">📊</span><span class="nav-label">Dashboard</span>
+        </button>
+
+        <div class="sidebar-section-label">Property Analysis</div>
+        <button class="sidebar-link" data-page="valuation" onclick="navigate('valuation')">
+          <span class="nav-icon">🏡</span><span class="nav-label">Property Valuation</span>
+        </button>
+        <button class="sidebar-link" data-page="comparables" onclick="navigate('comparables')">
+          <span class="nav-icon">⚖️</span><span class="nav-label">Comparable Properties</span>
+        </button>
+        <button class="sidebar-link" data-page="location" onclick="navigate('location')">
+          <span class="nav-icon">🗺️</span><span class="nav-label">Location Intelligence</span>
+        </button>
+
+        <div class="sidebar-section-label">Financial &amp; Risk</div>
+        <button class="sidebar-link" data-page="market" onclick="navigate('market')">
+          <span class="nav-icon">📈</span><span class="nav-label">Market Analysis</span>
+        </button>
+        <button class="sidebar-link" data-page="risk" onclick="navigate('risk')">
+          <span class="nav-icon">🌦️</span><span class="nav-label">Risk Analysis</span>
+        </button>
+        <button class="sidebar-link" data-page="forecast" onclick="navigate('forecast')">
+          <span class="nav-icon">🔮</span><span class="nav-label">Price Forecast</span>
+        </button>
+        <button class="sidebar-link" data-page="calculator" onclick="navigate('calculator')">
+          <span class="nav-icon">🧮</span><span class="nav-label">Investment Calculator</span>
+        </button>
+        <button class="sidebar-link" data-page="sentiment" onclick="navigate('sentiment')">
+          <span class="nav-icon">🧠</span><span class="nav-label">Sentiment &amp; News</span>
+        </button>
+
+        <div class="sidebar-section-label">Simulation &amp; AI</div>
+        <button class="sidebar-link" data-page="simulation" onclick="navigate('simulation')">
+          <span class="nav-icon">⚡</span><span class="nav-label">Scenario Analysis</span>
+        </button>
+        <button class="sidebar-link" data-page="assistant" onclick="navigate('assistant')">
+          <span class="nav-icon">🤖</span><span class="nav-label">AI Assistant</span>
+        </button>
+
+        <div class="sidebar-section-label">Portfolio &amp; Reports</div>
+        <button class="sidebar-link" data-page="portfolio" onclick="navigate('portfolio')">
+          <span class="nav-icon">💼</span><span class="nav-label">Portfolio Mgmt</span>
+        </button>
+        <button class="sidebar-link" data-page="reports" onclick="navigate('reports')">
+          <span class="nav-icon">📄</span><span class="nav-label">Investment Report</span>
+        </button>
+
         <div class="sidebar-section-label">System</div>
-        <button class="sidebar-link" data-page="settings" onclick="navigate('settings')"><span
-            class="nav-icon">⚙️</span><span class="nav-label">Settings</span></button>
+        <button class="sidebar-link" data-page="modelStatus" onclick="navigate('modelStatus')">
+          <span class="nav-icon">🔬</span><span class="nav-label">Model Performance</span>
+        </button>
+        <button class="sidebar-link" data-page="settings" onclick="navigate('settings')">
+          <span class="nav-icon">⚙️</span><span class="nav-label">Settings</span>
+        </button>
       </div>
       <div class="sidebar-footer">
         <div class="user-badge">
@@ -1211,7 +1247,8 @@
   </div>
 
   <script type="module" src="/map-entry.jsx"></script>
-  <script src="/app.js?v=1.0.3"></script>
+  <script src="/analytics_views.js?v=1.0.4"></script>
+  <script src="/app.js?v=1.0.4"></script>
 </body>
 
 </html>

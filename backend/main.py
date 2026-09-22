@@ -26,6 +26,16 @@ from ml_models.sentiment import sentiment_model
 from ml_models.simulation import scenario_simulator
 from ml_models.agent import portfolio_rl_agent
 from dl_models.image_valuation import image_valuation_model
+from analytics import (
+    get_comparable_properties,
+    calculate_investment_score,
+    calculate_comprehensive_risk,
+    generate_timeline_forecast,
+    calculate_investment_pnl,
+    evaluate_scenarios,
+    get_sentiment_feed,
+    get_model_metrics
+)
 
 # Project Reorganization Comments:
 # - Frontend: Located in the "/frontend" folder relative to the workspace root.
@@ -535,6 +545,71 @@ async def predict_property_valuation(
         pred["unit"] = unit
         pred["area_sqft"] = round(sqft_for_ml, 2)
         pred["area_input"] = sqft
+
+        # Decision-Support Analytics Pipeline Enrichment
+        district = details.get("district") or details.get("city") or "Coimbatore"
+        state = details.get("state") or "Tamil Nadu"
+        asking_price = details.get("asking_price") or details.get("price") or pred["predicted_price"]
+        road_access = details.get("road_access", "Paved")
+        utilities_avail = details.get("utilities_available", True)
+        if isinstance(utilities_avail, str):
+            utilities_avail = utilities_avail.lower() in ["true", "1", "yes"]
+
+        # 1. Real comparable properties from realistic dataset
+        pred["comparables"] = get_comparable_properties(
+            district=district,
+            property_type=property_type,
+            area_sqft=sqft_for_ml,
+            user_price=float(asking_price) if asking_price else pred["predicted_price"],
+            limit=6
+        )
+
+        # 2. Comprehensive natural disaster & financial risk
+        pred["comprehensive_risk"] = calculate_comprehensive_risk(
+            district=district,
+            state=state,
+            latitude=latitude,
+            longitude=longitude,
+            property_type=property_type,
+            age_of_property=max(0, datetime.now().year - year_built)
+        )
+        comp_risk_score = pred["comprehensive_risk"].get("composite_risk_score", pred.get("risk_score", 25.0))
+
+        # 3. Transparent 6-factor investment analysis score
+        pred["investment_score"] = calculate_investment_score(
+            asking_price=float(asking_price) if asking_price else pred["predicted_price"],
+            fair_value=pred["predicted_price"],
+            location_score=pred.get("location_score", 72.0),
+            demand_score=pred.get("demand_score", 68.0),
+            road_access=road_access,
+            utilities_available=utilities_avail,
+            risk_score=comp_risk_score,
+            sentiment_score=0.32,
+            roi_percentage=pred.get("roi_percentage", 9.5)
+        )
+
+        # 4. Timeline forecast (2022 to 2027)
+        growth_rate = pred.get("appreciation_rate", 7.5)
+        pred["timeline_forecast"] = generate_timeline_forecast(
+            fair_value=pred["predicted_price"],
+            annual_growth_rate=growth_rate
+        )
+
+        # 5. P&L investment calculator defaults
+        pred["pnl_summary"] = calculate_investment_pnl(
+            purchase_price=float(asking_price) if asking_price else pred["predicted_price"],
+            holding_period_years=details.get("hold_years", 5),
+            annual_growth_rate=growth_rate,
+            risk_score=comp_risk_score
+        )
+
+        # 6. What-if scenario sensitivity test
+        pred["scenarios"] = evaluate_scenarios(
+            base_price=pred["predicted_price"],
+            base_return=pred.get("roi_percentage", 8.5),
+            base_risk=comp_risk_score
+        )
+
         return pred
     except HTTPException:
         raise
@@ -1094,7 +1169,158 @@ def read_alert(alert_id: int, current_user: User = Depends(get_current_user), db
     if alert:
         alert.is_read = True
         db.commit()
-    return {"status": "Success"}
+# ----------------- ANALYTICS & DECISION-SUPPORT ENDPOINTS -----------------
+@app.post("/api/property/comparables")
+@app.get("/api/property/comparables")
+async def api_comparables(
+    district: str = "Coimbatore",
+    property_type: str = "Residential House",
+    area_sqft: float = 1500.0,
+    asking_price: Optional[float] = None,
+    limit: int = 6
+):
+    """Retrieve comparable properties from realistic dataset."""
+    try:
+        res = get_comparable_properties(
+            district=district,
+            property_type=property_type,
+            area_sqft=area_sqft,
+            user_price=asking_price,
+            limit=limit
+        )
+        return res
+    except Exception as e:
+        logger.error(f"Error in api_comparables: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/property/score-breakdown")
+async def api_score_breakdown(
+    asking_price: float = Form(...),
+    fair_value: float = Form(...),
+    location_score: float = Form(72.0),
+    demand_score: float = Form(68.0),
+    road_access: str = Form("Paved"),
+    utilities_available: bool = Form(True),
+    risk_score: float = Form(24.0),
+    sentiment_score: float = Form(0.25),
+    roi_percentage: float = Form(9.5)
+):
+    """Calculate transparent 6-factor investment score with full breakdown."""
+    try:
+        return calculate_investment_score(
+            asking_price=asking_price,
+            fair_value=fair_value,
+            location_score=location_score,
+            demand_score=demand_score,
+            road_access=road_access,
+            utilities_available=utilities_available,
+            risk_score=risk_score,
+            sentiment_score=sentiment_score,
+            roi_percentage=roi_percentage
+        )
+    except Exception as e:
+        logger.error(f"Error in api_score_breakdown: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/risk/comprehensive")
+@app.get("/api/risk/comprehensive")
+async def api_comprehensive_risk(
+    district: str = "Chennai",
+    state: str = "Tamil Nadu",
+    latitude: Optional[float] = None,
+    longitude: Optional[float] = None,
+    property_type: str = "Residential House",
+    age_of_property: int = 5
+):
+    """Calculate natural disaster and financial risk breakdown."""
+    try:
+        return calculate_comprehensive_risk(
+            district=district,
+            state=state,
+            latitude=latitude,
+            longitude=longitude,
+            property_type=property_type,
+            age_of_property=age_of_property
+        )
+    except Exception as e:
+        logger.error(f"Error in api_comprehensive_risk: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/forecast/timeline")
+@app.get("/api/forecast/timeline")
+async def api_timeline_forecast(
+    fair_value: float = 3500000.0,
+    annual_growth_rate: float = 7.5
+):
+    """Generate 2022-2027 price history and forecast timeline."""
+    try:
+        return generate_timeline_forecast(
+            fair_value=fair_value,
+            annual_growth_rate=annual_growth_rate
+        )
+    except Exception as e:
+        logger.error(f"Error in api_timeline_forecast: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/calculator/pnl")
+async def api_calculator_pnl(
+    purchase_price: float = Form(...),
+    registration_cost: Optional[float] = Form(None),
+    development_cost: float = Form(0.0),
+    other_expenses: float = Form(0.0),
+    holding_period_years: int = Form(5),
+    annual_growth_rate: float = Form(7.5),
+    risk_score: float = Form(24.0)
+):
+    """Calculate P&L, ROI, CAGR, break-even, and 12-month expected trend."""
+    try:
+        return calculate_investment_pnl(
+            purchase_price=purchase_price,
+            registration_cost=registration_cost,
+            development_cost=development_cost,
+            other_expenses=other_expenses,
+            holding_period_years=holding_period_years,
+            annual_growth_rate=annual_growth_rate,
+            risk_score=risk_score
+        )
+    except Exception as e:
+        logger.error(f"Error in api_calculator_pnl: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/scenarios/evaluate")
+async def api_evaluate_scenarios(
+    base_price: float = Form(...),
+    base_return: float = Form(8.5),
+    base_risk: float = Form(24.0)
+):
+    """Evaluate 8 dynamic real estate stress scenarios."""
+    try:
+        return evaluate_scenarios(
+            base_price=base_price,
+            base_return=base_return,
+            base_risk=base_risk
+        )
+    except Exception as e:
+        logger.error(f"Error in api_evaluate_scenarios: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/sentiment/feed")
+async def api_sentiment_feed():
+    """Return NLP sentiment distribution and curated financial news."""
+    try:
+        return get_sentiment_feed()
+    except Exception as e:
+        logger.error(f"Error in api_sentiment_feed: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/models/metrics")
+async def api_model_metrics():
+    """Return MAE, RMSE, R², MAPE, and dataset statistics for technical review."""
+    try:
+        return get_model_metrics()
+    except Exception as e:
+        logger.error(f"Error in api_model_metrics: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 # ----------------- WEBSOCKET ENDPOINTS -----------------
 @app.websocket("/ws/notifications")

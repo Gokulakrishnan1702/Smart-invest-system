@@ -30,35 +30,43 @@ Smart Invest unifies three specialized dataset repositories to provide comprehen
 
 ## 🚀 Key Features
 
-### 🏡 Intelligent Property & Land Valuation
-- **Triple-Engine ML Architecture**:
-  - *Realistic Property Engine* (R²=0.962) trained on 25,000 real-world records covering 15 property types.
-  - *Unified Land Engine* (R²=0.829) trained on 12,013 combined land records.
-  - *Global Benchmark Engine* (R²=0.522) for international cross-border properties.
-- **Investment Intelligence**: Automated expected annual ROI % prediction, investment potential rating (High, Medium, Low), market demand score, and location quality score.
-- **Dedicated Land Pricing Engine**: Modeled specifically on land metrics (sqft, acres, cents, location, district, road accessibility, utility access) avoiding misleading residential room/floor formulas.
-- **Multi-Unit Area Converter**: Seamless switching between **Sqft**, **Acres**, and **Cents** with dynamic conversion.
-- **Profit & Loss Calculator**: Evaluates entered asking price vs. AI fair market value to flag bargains, fair value, and overpriced properties.
-- **Explainable AI (XAI)**: Feature importance breakdowns and upper/lower confidence bounds.
-- **Interactive GIS Map**: Leaflet-powered geolocation picker with live route calculation and road/satellite views.
+---
 
-### 📈 Market Analysis & Economic Forecasting
-- Multi-country real estate price index tracking.
-- Market cycle phase indicators (Recovery, Expansion, Hyper Supply, Recession).
-- Projected trend outlooks and historical performance visualizations.
+## 🎯 14 Decision-Support Modules & Architecture
 
-### 🧠 Market Sentiment & NLP Analysis
-- Real-time news scraping and NLP sentiment analysis.
-- Confidence-weighted market mood meters (Bullish, Neutral, Bearish).
+Smart Invest operates as a logically connected decision-support pipeline where each module builds upon preceding layers:
 
-### ⚡ Portfolio Management & Scenario Stress Testing
-- Dynamic portfolio distribution and risk metrics.
-- Reinforcement learning (RL) based portfolio rebalancing recommendations.
-- Macroeconomic scenario stress tests: Interest rate hikes, inflation spikes, market crashes, and regulatory shifts.
+$$\text{Property Data} \to \text{Valuation} \to \text{Comparables} \to \text{Location} \to \text{Market} \to \text{Risk} \to \text{Forecast} \to \text{P&L} \to \text{Sentiment} \to \text{Scenarios} \to \text{Score} \to \text{Report}$$
 
-### 📊 Multiple Dashboards
-1. **Interactive Single Page Application (SPA)**: Built with modern responsive UI, dark/light theme, Chart.js, and Leaflet GIS.
-2. **Streamlit Analytics Dashboard**: Executive analytics cockpit with interactive Plotly scatter plots, gauges, and scenario configurators.
+1. **📊 Executive Dashboard**: Dynamic KPI metrics (Estimated Fair Value, Current Asking Price, Expected Return %, Composite Risk Level, Market Sentiment, and Investment Score) + SMART INVEST INSIGHT recommendation card.
+2. **🏡 Property Valuation (ML Core)**: Dual Gradient Boosting & Random Forest engines with 96.2% R² precision, feature importances, and statistical confidence intervals.
+3. **⚖️ Comparable Property Analysis**: Real-world matching against 25,000 verified transaction records in `smart_invest_realistic_dataset.csv`, computing average ₹/sqft and price difference %.
+4. **🗺️ Location Intelligence & GIS**: Interactive Leaflet map with 1 km and 3 km radius analysis, plus proximity indicators for arterial highways, hospitals, schools, and transit terminals.
+5. **📈 Dedicated Market Analysis**: 4 dedicated charts: Historical Price (2022-2025), Market Growth (% YoY), Price/sqft Momentum, and Volatility & Moving Averages (SMA 20/50).
+6. **🌦️ Multi-Hazard Risk Dashboard**: Granular natural disaster breakdown (Flood, Earthquake [BIS Seismic Zones II-V], Heavy Rain, Fire) and financial volatility exposure.
+7. **🔮 Price History + Forecast Timeline**: Timeline (2022-2027+) visually separating solid historical estimates from dashed model forecasts with shaded confidence bounds.
+8. **🧮 Profit & Loss Calculator**: Evaluates total capital outlay (purchase, stamp duty, renovation, other expenses), future equity, net profit, downside loss exposure, ROI %, CAGR %, and 12-month expected profit curve.
+9. **🧠 Sentiment Analysis & Curated News**: NLP polarity scoring (+0.32 index) across monetary policy and real estate news with interactive filters ([All], [Positive], [Neutral], [Negative]).
+10. **⚡ Scenario & What-If Stress Testing**: Evaluates 8 realistic economic shocks (Base Case, High Growth, Stagnation, Rate Hike, Downturn, Infra Boost, Infra Delay, Natural Hazard).
+11. **🤖 AI Investment Assistant**: Conversational real-estate advisory assistant.
+12. **💼 Portfolio Management & RL Agent**: Multi-asset holdings allocation with Reinforcement Learning (Q-learning) rebalancing recommendations.
+13. **📄 Smart Invest Analysis Report**: Complete, printable/exportable acquisition dossier with print stylesheet.
+14. **🔬 Model Performance & Data Quality Audit**: Official regression evaluation metrics (R²=0.962, MAE=₹627.96/sqft, RMSE=970.44, MAPE=21.78%) across all 3 integrated datasets for college project reviews and vivas.
+
+---
+
+## 📐 Transparent Investment Analysis Score Formula
+
+Instead of an opaque black box, Smart Invest computes an auditable 6-factor composite score (0 to 100):
+
+$$\text{Score} = 0.25 \times \text{FairValue} + 0.20 \times \text{Location} + 0.15 \times \text{Infra} + 0.15 \times \text{Market} + 0.10 \times \text{Sentiment} + 0.15 \times \text{Risk}$$
+
+- **Fair Value Score (25%)**: Compares Asking Price vs AI Fair Value (rewards undervaluation bargains, penalizes overpriced assets).
+- **Location Score (20%)**: Combines district location tier and commercial absorption demand.
+- **Infrastructure Score (15%)**: Evaluates road access (paved arterial vs dirt) and utility connectivity.
+- **Market Trend Score (15%)**: Driven by historical price appreciation momentum and ROI %.
+- **Sentiment Score (10%)**: NLP polarity score normalized from -1.0..+1.0 into 0..100.
+- **Risk Score (15%)**: Inverse of composite natural hazard and financial vulnerability ($100 - \text{Risk}\%$).
 
 ---
 

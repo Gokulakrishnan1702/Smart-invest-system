@@ -357,10 +357,21 @@ function bootApp() {
 // NAVIGATION
 // =============================================
 const PAGE_TITLES = {
-  dashboard: 'Dashboard', valuation: 'Property Valuation', market: 'Market Analysis',
-  sentiment: 'Sentiment Analysis', assistant: 'AI Investment Assistant',
-  simulation: 'Scenario Simulation', portfolio: 'Portfolio Management',
-  reports: 'Reports', settings: 'Settings'
+  dashboard: 'Executive Dashboard',
+  valuation: 'Property Valuation & Analysis',
+  comparables: 'Comparable Properties Analysis',
+  location: 'Location Intelligence & GIS',
+  market: 'Market Analysis & Trends',
+  risk: 'Risk Analysis & Disaster Vulnerability',
+  forecast: 'Property Price History & Forecast',
+  calculator: 'Investment & P&L Calculator',
+  sentiment: 'Market Sentiment & News Intelligence',
+  simulation: 'Scenario & What-If Stress Testing',
+  assistant: 'AI Investment Assistant',
+  portfolio: 'Portfolio Management & Stress Testing',
+  reports: 'Smart Invest Analysis Report',
+  modelStatus: 'Model Performance & Data Quality',
+  settings: 'Platform Settings'
 };
 
 function navigate(page) {
@@ -373,8 +384,25 @@ function navigate(page) {
   Object.values(charts).forEach(c => { try { c.destroy(); } catch(e){} });
   charts = {};
   setTimeout(() => {
-    const pages = { dashboard, valuation, market, sentiment, assistant, simulation, portfolio, reports, settings };
+    const pages = {
+      dashboard: window.dashboard || dashboard,
+      valuation,
+      comparables: window.comparables,
+      location: window.locationIntelligence || window.location,
+      market,
+      risk: window.risk,
+      forecast: window.forecast,
+      calculator: window.calculator,
+      sentiment,
+      simulation: window.simulation || simulation,
+      assistant,
+      portfolio,
+      reports: window.reports || reports,
+      modelStatus: window.modelStatus,
+      settings
+    };
     if (pages[page]) pages[page](content);
+    else if (window[page]) window[page](content);
   }, 50);
 }
 
@@ -1136,6 +1164,23 @@ async function predictProperty(e) {
     }
     const pred = data.prediction;
 
+    // Synchronize to centralized active analysis so all 14 decision-support modules reflect this property
+    if (typeof setActiveAnalysis === 'function') {
+      setActiveAnalysis({
+        ...pred,
+        address,
+        property_type: type,
+        area_sqft: pred.area_sqft || areaRaw,
+        unit: displayUnit,
+        area_input: areaRaw,
+        asking_price: totalActualPrice || pred.predicted_price,
+        district: (window.currentLocationData && window.currentLocationData.district) || (document.getElementById('v-district') ? document.getElementById('v-district').value : 'Coimbatore'),
+        state: (window.currentLocationData && window.currentLocationData.state) || (document.getElementById('v-state') ? document.getElementById('v-state').value : 'Tamil Nadu'),
+        latitude: window.currentLocationData?.latitude || null,
+        longitude: window.currentLocationData?.longitude || null,
+      });
+    }
+
     // Safe numeric helpers
     const safeNum = (v, fallback = 0) => (v !== undefined && v !== null && !isNaN(Number(v))) ? Number(v) : fallback;
 
@@ -1314,6 +1359,23 @@ async function predictProperty(e) {
         ${imgHtml}
         ${featHtml}
         ${modelHtml}
+
+        <!-- Decision-Support Pipeline Actions -->
+        <div style="background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);border-radius:10px;padding:1rem;margin-top:1.25rem">
+          <div style="font-size:0.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.6rem">
+            🔗 Decision-Support Modules Ready for this Property:
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+            <button type="button" class="tab-btn active" style="font-size:0.78rem;padding:0.4rem 0.8rem;border:none;cursor:pointer" onclick="navigate('dashboard')">📊 Dashboard</button>
+            <button type="button" class="tab-btn" style="font-size:0.78rem;padding:0.4rem 0.8rem;background:rgba(255,255,255,0.06);border:none;cursor:pointer" onclick="navigate('comparables')">⚖️ Comparables</button>
+            <button type="button" class="tab-btn" style="font-size:0.78rem;padding:0.4rem 0.8rem;background:rgba(255,255,255,0.06);border:none;cursor:pointer" onclick="navigate('location')">🗺️ Location GIS</button>
+            <button type="button" class="tab-btn" style="font-size:0.78rem;padding:0.4rem 0.8rem;background:rgba(255,255,255,0.06);border:none;cursor:pointer" onclick="navigate('risk')">🌦️ Risk Analysis</button>
+            <button type="button" class="tab-btn" style="font-size:0.78rem;padding:0.4rem 0.8rem;background:rgba(255,255,255,0.06);border:none;cursor:pointer" onclick="navigate('forecast')">🔮 Price Forecast</button>
+            <button type="button" class="tab-btn" style="font-size:0.78rem;padding:0.4rem 0.8rem;background:rgba(255,255,255,0.06);border:none;cursor:pointer" onclick="navigate('calculator')">🧮 P&amp;L Calculator</button>
+            <button type="button" class="tab-btn" style="font-size:0.78rem;padding:0.4rem 0.8rem;background:rgba(255,255,255,0.06);border:none;cursor:pointer" onclick="navigate('simulation')">⚡ Scenarios</button>
+            <button type="button" class="tab-btn" style="font-size:0.78rem;padding:0.4rem 0.8rem;background:linear-gradient(135deg,#00D4FF,#7B61FF);color:#000;font-weight:700;border:none;cursor:pointer" onclick="navigate('reports')">📄 Full Report</button>
+          </div>
+        </div>
       </div>`;
     loadPropertyTable();
   } catch(err) {
