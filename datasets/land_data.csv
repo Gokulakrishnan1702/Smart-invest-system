@@ -1,0 +1,501 @@
+district,area_sqft,latitude,longitude,land_type,location_type,road_access,utilities_available,price_per_sqft
+Salem,3976.0,11.529713,78.278319,Vacant,Semi-Urban,yes,yes,205.85
+Tirunelveli,39878.0,8.857312,77.708085,Vacant,Rural,no,yes,91.87
+Visakhapatnam,72342.0,17.767901,83.204075,Development,Commercial,yes,yes,4859.55
+Aurangabad,21419.0,19.956902,75.479758,Development,Semi-Urban,no,yes,690.12
+Madurai,30621.0,10.000489,78.200814,Vacant,Urban,yes,yes,3145.72
+Tirunelveli,302157.0,8.706779,77.630387,Agricultural,Rural,no,no,82.11
+Salem,13087.0,11.571762,78.217581,Industrial,Semi-Urban,no,no,219.86
+Vijayawada,5104.0,16.473725,80.691851,Vacant,Urban,no,yes,2288.15
+Visakhapatnam,6188.0,17.670603,83.113089,Industrial,Semi-Urban,yes,yes,2262.95
+Visakhapatnam,32497.0,17.767844,83.101192,Commercial Plot,Urban,no,no,3604.73
+Mysore,28025.0,12.261793,76.781517,Industrial,Semi-Urban,yes,no,477.33
+Madurai,44867.0,9.887792,78.252241,Residential Plot,Urban,yes,yes,2775.02
+Tirupur,56591.0,11.072909,77.298788,Vacant,Rural,yes,no,116.27
+Bangalore,38526.0,12.84174,77.694132,Vacant,Urban,yes,yes,15624.61
+Mangalore,32349.0,12.890202,74.770533,Vacant,Rural,yes,no,197.93
+Pune,57348.0,18.423137,73.98259,Vacant,Rural,yes,no,576.69
+Vellore,25975.0,13.013052,79.205253,Vacant,Semi-Urban,no,yes,242.95
+Salem,40028.0,11.582006,78.152772,Residential Plot,Semi-Urban,no,yes,337.68
+Mysore,166543.0,12.36292,76.686369,Agricultural,Rural,no,yes,107.7
+Chennai,15351.0,13.013684,80.398317,Vacant,Commercial,yes,yes,19103.6
+Chennai,6881.0,12.961779,80.250015,Residential Plot,Semi-Urban,no,yes,3303.89
+Bangalore,46600.0,13.105884,77.582629,Commercial Plot,Commercial,no,yes,12978.42
+Bangalore,11750.0,12.879771,77.677468,Vacant,Commercial,yes,yes,7371.03
+Madurai,6434.0,9.91161,78.07105,Development,Semi-Urban,yes,yes,936.06
+Bangalore,47165.0,12.94033,77.537682,Commercial Plot,Commercial,yes,yes,10848.62
+Trichy,5400.0,10.724234,78.633972,Development,Urban,yes,yes,2506.51
+Kochi,11264.0,9.821492,76.337192,Development,Commercial,no,yes,10673.98
+Kochi,25043.0,9.812168,76.407832,Vacant,Rural,no,no,277.38
+Tirupur,37195.0,10.972297,77.429943,Vacant,Rural,no,no,71.68
+Chennai,61697.0,13.109848,80.130235,Commercial Plot,Urban,yes,yes,14839.18
+Mysore,30304.0,12.369995,76.596528,Development,Urban,yes,yes,4435.45
+Visakhapatnam,44235.0,17.747403,83.24035,Commercial Plot,Urban,yes,yes,7202.35
+Vijayawada,18644.0,16.448453,80.559558,Vacant,Urban,no,yes,4459.13
+Tirupur,61469.0,11.195705,77.195276,Vacant,Urban,yes,yes,2242.24
+Coimbatore,331307.0,11.03353,77.021322,Agricultural,Semi-Urban,yes,yes,674.4
+Pune,34075.0,18.624913,73.924921,Commercial Plot,Semi-Urban,no,yes,4722.46
+Coimbatore,51966.0,10.995766,76.979795,Vacant,Rural,no,no,273.01
+Mysore,63634.0,12.199879,76.553658,Agricultural,Semi-Urban,yes,yes,238.24
+Coimbatore,210989.0,10.961711,76.88403,Agricultural,Rural,no,no,57.95
+Trichy,63311.0,10.75691,78.743765,Development,Semi-Urban,yes,no,264.98
+Madurai,5524.0,9.852957,78.043972,Vacant,Rural,no,no,166.0
+Kochi,63346.0,9.934993,76.384539,Vacant,Semi-Urban,yes,yes,2132.67
+Aurangabad,4138.0,19.935371,75.283292,Residential Plot,Urban,yes,no,1237.52
+Vellore,44082.0,12.903614,79.216926,Vacant,Rural,yes,no,44.27
+Tirunelveli,77046.0,8.740818,77.772781,Commercial Plot,Semi-Urban,no,no,554.41
+Trichy,30276.0,10.767763,78.585878,Vacant,Rural,no,yes,180.31
+Madurai,29921.0,9.949667,78.111778,Vacant,Rural,no,no,153.75
+Erode,5740.0,11.488704,77.670001,Vacant,Rural,yes,no,141.06
+Mysore,176260.0,12.166104,76.647218,Agricultural,Rural,no,no,29.73
+Thiruvananthapuram,70099.0,8.546868,76.85517,Development,Urban,yes,no,7135.72
+Tirupur,59078.0,11.044714,77.259346,Vacant,Urban,yes,yes,1820.59
+Pune,73722.0,18.5262,73.751382,Development,Semi-Urban,yes,yes,2818.77
+Thiruvananthapuram,62473.0,8.442862,77.037082,Vacant,Rural,yes,yes,113.87
+Tirupur,44876.0,11.160807,77.351187,Vacant,Rural,no,yes,162.88
+Pune,36515.0,18.585979,73.710925,Development,Commercial,yes,yes,13958.33
+Visakhapatnam,10713.0,17.648877,83.351077,Vacant,Commercial,yes,yes,4243.74
+Mangalore,27511.0,12.974459,74.861085,Residential Plot,Urban,yes,yes,4365.42
+Mangalore,385559.0,12.992393,74.936043,Agricultural,Rural,yes,no,238.78
+Vellore,45403.0,12.797566,79.179757,Vacant,Rural,no,no,89.11
+Aurangabad,23930.0,19.772466,75.406803,Agricultural,Rural,no,no,38.64
+Vijayawada,16706.0,16.622817,80.50162,Development,Semi-Urban,yes,no,1261.73
+Chennai,30473.0,13.039281,80.321753,Vacant,Commercial,yes,yes,12015.93
+Hyderabad,5844.0,17.295695,78.543278,Industrial,Semi-Urban,yes,yes,1489.6
+Trichy,9737.0,10.924594,78.646107,Vacant,Rural,yes,no,268.88
+Vellore,277620.0,12.844984,79.076771,Agricultural,Rural,no,no,58.0
+Aurangabad,5819.0,19.892111,75.305928,Vacant,Urban,yes,yes,2230.12
+Erode,58946.0,11.280461,77.654448,Vacant,Rural,no,no,142.01
+Vijayawada,163958.0,16.420226,80.521382,Agricultural,Rural,no,no,74.11
+Chennai,84087.0,13.092512,80.158428,Development,Commercial,yes,yes,16660.14
+Hyderabad,25380.0,17.306572,78.371785,Vacant,Commercial,yes,no,8186.84
+Visakhapatnam,30459.0,17.739955,83.14655,Vacant,Semi-Urban,yes,no,1645.3
+Madurai,231157.0,10.016858,78.208668,Agricultural,Rural,no,no,70.59
+Chennai,2276.0,13.136785,80.155066,Development,Commercial,yes,yes,10547.81
+Vijayawada,44158.0,16.423555,80.572479,Vacant,Rural,no,yes,191.49
+Kochi,76714.0,10.054002,76.32261,Commercial Plot,Semi-Urban,yes,yes,4663.67
+Aurangabad,69287.0,19.845689,75.216381,Commercial Plot,Urban,no,yes,1617.05
+Tirunelveli,80143.0,8.721186,77.777302,Commercial Plot,Urban,yes,yes,1035.3
+Thiruvananthapuram,10576.0,8.667052,76.996073,Development,Semi-Urban,yes,yes,2672.03
+Tirupur,30401.0,11.196256,77.242095,Vacant,Urban,yes,no,2199.81
+Tirupur,23333.0,11.191993,77.483181,Development,Commercial,yes,yes,1577.47
+Mysore,319559.0,12.192076,76.543654,Agricultural,Rural,no,no,29.54
+Mysore,18924.0,12.349469,76.50511,Vacant,Rural,yes,no,85.41
+Vijayawada,293123.0,16.429565,80.639529,Agricultural,Semi-Urban,yes,no,878.04
+Bangalore,3727.0,12.923869,77.555616,Vacant,Commercial,yes,yes,9639.64
+Nashik,37998.0,20.023539,73.84153,Industrial,Semi-Urban,yes,yes,1101.26
+Erode,362703.0,11.25888,77.830296,Agricultural,Semi-Urban,yes,no,175.38
+Nashik,179305.0,19.999576,73.712478,Agricultural,Rural,no,yes,111.4
+Vijayawada,40877.0,16.449409,80.523916,Vacant,Semi-Urban,yes,yes,1266.55
+Trichy,374101.0,10.695698,78.739765,Agricultural,Semi-Urban,yes,no,406.58
+Bangalore,39987.0,12.856066,77.52817,Residential Plot,Semi-Urban,no,no,3796.92
+Thiruvananthapuram,64595.0,8.435208,76.952231,Vacant,Rural,yes,no,275.69
+Mangalore,19786.0,12.913397,74.841411,Vacant,Rural,no,yes,374.99
+Vellore,51021.0,12.814319,79.107308,Vacant,Rural,no,no,91.88
+Tirupur,372713.0,11.164204,77.35444,Agricultural,Rural,no,no,38.5
+Tirupur,61676.0,10.991004,77.261247,Development,Urban,yes,yes,2672.82
+Erode,65752.0,11.324831,77.855356,Commercial Plot,Semi-Urban,yes,yes,310.77
+Kochi,60358.0,9.847009,76.24053,Commercial Plot,Semi-Urban,no,no,2054.55
+Erode,18005.0,11.266821,77.77776,Residential Plot,Urban,yes,no,1515.16
+Vijayawada,73035.0,16.402004,80.523079,Commercial Plot,Urban,yes,yes,4745.39
+Madurai,182697.0,10.042692,78.220519,Agricultural,Rural,no,yes,61.39
+Pune,22114.0,18.485472,73.840721,Development,Commercial,yes,yes,8234.15
+Nashik,42213.0,20.076464,73.69224,Vacant,Rural,no,no,52.48
+Coimbatore,32176.0,10.913434,76.890327,Industrial,Semi-Urban,yes,no,1053.13
+Bangalore,5265.0,12.839848,77.588295,Vacant,Rural,no,yes,447.34
+Madurai,25787.0,9.950424,78.178457,Vacant,Rural,no,yes,265.81
+Chennai,43877.0,12.953998,80.310031,Residential Plot,Urban,yes,yes,4373.29
+Tirunelveli,143819.0,8.594329,77.750547,Agricultural,Rural,yes,no,22.72
+Trichy,56725.0,10.879531,78.80954,Industrial,Semi-Urban,yes,no,823.23
+Erode,48067.0,11.202318,77.627024,Vacant,Semi-Urban,no,yes,93.05
+Mysore,47090.0,12.337486,76.676243,Residential Plot,Urban,no,yes,2768.59
+Nashik,266624.0,19.926971,73.902577,Agricultural,Rural,no,no,58.49
+Tirupur,64539.0,11.034693,77.267698,Vacant,Urban,yes,yes,986.07
+Mysore,97210.0,12.159101,76.653204,Agricultural,Rural,no,no,160.83
+Kochi,13468.0,9.844411,76.165674,Commercial Plot,Commercial,yes,yes,6599.75
+Pune,176393.0,18.652591,73.816963,Agricultural,Semi-Urban,yes,yes,1491.47
+Aurangabad,60379.0,19.923799,75.407871,Vacant,Semi-Urban,no,yes,453.82
+Coimbatore,35268.0,11.126106,77.095867,Vacant,Rural,no,no,212.16
+Coimbatore,58468.0,11.108753,77.011857,Development,Semi-Urban,yes,no,1926.63
+Erode,53410.0,11.490241,77.645028,Residential Plot,Semi-Urban,no,yes,429.35
+Aurangabad,26887.0,19.757188,75.220186,Agricultural,Rural,no,no,93.42
+Madurai,20354.0,9.982383,78.163571,Residential Plot,Semi-Urban,yes,yes,535.71
+Pune,37064.0,18.43202,73.881644,Vacant,Urban,yes,no,3591.5
+Vijayawada,378877.0,16.588199,80.766281,Agricultural,Rural,yes,no,97.35
+Thiruvananthapuram,45843.0,8.547395,77.018858,Industrial,Semi-Urban,no,yes,2002.93
+Aurangabad,121933.0,19.789095,75.432606,Agricultural,Rural,no,no,61.98
+Trichy,47722.0,10.834882,78.841917,Commercial Plot,Urban,yes,yes,1025.08
+Madurai,66535.0,9.985555,78.052681,Commercial Plot,Urban,yes,yes,3828.72
+Thiruvananthapuram,6131.0,8.528844,76.856101,Residential Plot,Urban,yes,yes,7453.94
+Kochi,82754.0,9.934324,76.236336,Commercial Plot,Urban,yes,yes,7397.43
+Mysore,251260.0,12.194417,76.549309,Agricultural,Rural,no,yes,144.55
+Trichy,42420.0,10.706859,78.618706,Development,Semi-Urban,yes,yes,1119.9
+Coimbatore,41810.0,11.138401,77.059631,Vacant,Urban,yes,yes,1312.17
+Hyderabad,11309.0,17.451598,78.472434,Development,Urban,yes,yes,4451.51
+Aurangabad,79235.0,19.850343,75.427051,Agricultural,Rural,no,no,29.99
+Vijayawada,28672.0,16.560517,80.517835,Vacant,Rural,no,yes,59.33
+Pune,24606.0,18.498711,73.805078,Agricultural,Rural,yes,yes,210.66
+Hyderabad,13295.0,17.474327,78.525628,Industrial,Semi-Urban,yes,yes,1355.81
+Salem,26977.0,11.646969,78.079447,Vacant,Rural,no,no,180.5
+Salem,8390.0,11.736327,78.280277,Commercial Plot,Urban,yes,yes,1134.69
+Nashik,43130.0,19.901209,73.705316,Development,Semi-Urban,no,no,854.87
+Tirupur,84058.0,11.112471,77.223816,Commercial Plot,Semi-Urban,no,no,584.24
+Aurangabad,58518.0,19.729035,75.244715,Residential Plot,Semi-Urban,yes,no,868.19
+Tirunelveli,328398.0,8.66016,77.82534,Agricultural,Rural,yes,no,35.01
+Trichy,56583.0,10.794668,78.839164,Residential Plot,Urban,yes,yes,2668.34
+Vellore,67322.0,12.9352,79.178879,Development,Semi-Urban,yes,yes,729.26
+Salem,19327.0,11.77511,78.134593,Commercial Plot,Urban,yes,no,2375.0
+Bangalore,42765.0,12.907723,77.638,Vacant,Urban,no,yes,9565.27
+Chennai,85246.0,13.1822,80.212954,Commercial Plot,Urban,yes,yes,18265.44
+Salem,56296.0,11.781127,78.21636,Vacant,Rural,yes,yes,92.68
+Nashik,4907.0,19.87352,73.649847,Residential Plot,Urban,yes,no,1178.2
+Vellore,46821.0,12.856174,79.192948,Industrial,Semi-Urban,no,no,184.06
+Thiruvananthapuram,20852.0,8.623753,76.861077,Vacant,Urban,yes,yes,4813.47
+Nashik,63677.0,19.896128,73.712558,Development,Urban,yes,no,2980.79
+Chennai,17619.0,13.053486,80.222491,Commercial Plot,Urban,yes,yes,12073.25
+Nashik,35379.0,19.970246,73.797039,Vacant,Rural,no,yes,113.08
+Coimbatore,42065.0,11.107471,77.065019,Development,Semi-Urban,no,yes,856.47
+Mysore,349386.0,12.436109,76.698944,Agricultural,Semi-Urban,no,yes,302.31
+Kochi,65258.0,9.80382,76.122889,Vacant,Urban,yes,yes,6723.51
+Tirunelveli,35904.0,8.780024,77.621144,Industrial,Semi-Urban,yes,yes,333.93
+Trichy,47503.0,10.901535,78.803695,Vacant,Rural,no,no,159.51
+Trichy,38595.0,10.698549,78.689344,Agricultural,Rural,yes,yes,113.89
+Kochi,13301.0,10.060911,76.415594,Vacant,Commercial,yes,yes,8520.53
+Trichy,48920.0,10.724955,78.832707,Residential Plot,Semi-Urban,yes,yes,311.76
+Kochi,42596.0,9.940629,76.343015,Vacant,Urban,yes,yes,9988.16
+Hyderabad,418233.0,17.248783,78.524554,Agricultural,Rural,yes,yes,149.94
+Madurai,386074.0,9.888897,77.97841,Agricultural,Semi-Urban,yes,yes,527.81
+Tirunelveli,50691.0,8.593961,77.63839,Development,Urban,yes,no,886.09
+Pune,77097.0,18.388149,73.937317,Commercial Plot,Semi-Urban,no,yes,4016.42
+Hyderabad,91458.0,17.284794,78.37847,Agricultural,Semi-Urban,no,yes,1550.37
+Tirupur,35475.0,11.067958,77.230524,Vacant,Rural,no,no,67.98
+Vellore,61610.0,12.973471,79.125974,Industrial,Semi-Urban,yes,yes,462.34
+Madurai,21726.0,9.952768,78.1687,Vacant,Urban,yes,no,1054.06
+Coimbatore,50112.0,10.987933,77.088279,Commercial Plot,Semi-Urban,yes,no,664.15
+Thiruvananthapuram,25804.0,8.610697,76.852715,Agricultural,Rural,no,no,198.98
+Trichy,27122.0,10.841576,78.614671,Development,Urban,yes,yes,3476.24
+Tirunelveli,342089.0,8.648004,77.754186,Agricultural,Rural,yes,yes,47.86
+Salem,16016.0,11.679066,78.274302,Industrial,Semi-Urban,yes,yes,808.1
+Visakhapatnam,70302.0,17.602443,83.226435,Development,Urban,yes,yes,4566.49
+Thiruvananthapuram,9003.0,8.523731,76.84976,Vacant,Rural,no,no,133.51
+Mysore,5637.0,12.18708,76.575464,Industrial,Semi-Urban,no,yes,606.81
+Tirupur,68225.0,11.055631,77.243374,Commercial Plot,Urban,no,yes,2853.41
+Hyderabad,51966.0,17.344738,78.395822,Development,Urban,no,yes,10725.28
+Aurangabad,265350.0,19.950256,75.360698,Agricultural,Rural,no,no,54.35
+Kochi,53422.0,9.974865,76.141892,Agricultural,Rural,no,yes,120.83
+Bangalore,11644.0,12.915518,77.573385,Vacant,Rural,no,yes,400.41
+Kochi,52871.0,9.83925,76.263058,Vacant,Rural,no,no,134.44
+Aurangabad,16124.0,19.731343,75.437247,Vacant,Rural,yes,yes,234.49
+Thiruvananthapuram,46123.0,8.456881,76.90643,Vacant,Rural,no,no,104.92
+Hyderabad,20807.0,17.339377,78.590355,Industrial,Semi-Urban,yes,no,3185.95
+Vellore,49526.0,12.896354,79.200496,Development,Semi-Urban,no,no,372.57
+Vijayawada,18058.0,16.430536,80.691386,Development,Urban,yes,yes,3127.85
+Mysore,28089.0,12.274982,76.787929,Development,Urban,yes,yes,1625.1
+Salem,33069.0,11.737712,78.207568,Residential Plot,Semi-Urban,no,yes,379.99
+Tirupur,81655.0,11.207445,77.357362,Agricultural,Semi-Urban,yes,no,108.27
+Tirunelveli,63060.0,8.750817,77.763469,Vacant,Semi-Urban,yes,yes,392.8
+Mysore,20963.0,12.186256,76.704214,Vacant,Semi-Urban,yes,yes,1393.93
+Vijayawada,84996.0,16.436829,80.763924,Development,Urban,no,yes,3806.97
+Thiruvananthapuram,26271.0,8.549711,76.864991,Vacant,Rural,no,no,289.26
+Pune,16484.0,18.657406,73.844599,Vacant,Commercial,yes,yes,9722.01
+Tirunelveli,20150.0,8.663348,77.677974,Vacant,Rural,no,no,27.39
+Kochi,75860.0,9.957504,76.386768,Development,Urban,no,yes,6472.28
+Kochi,51198.0,9.86618,76.38033,Development,Commercial,yes,yes,12943.79
+Nashik,379209.0,20.066886,73.654303,Agricultural,Rural,no,no,48.18
+Mangalore,53509.0,12.759251,74.782847,Commercial Plot,Urban,yes,yes,5527.62
+Pune,19333.0,18.609022,73.788737,Vacant,Urban,no,yes,10753.15
+Tirupur,33135.0,11.19977,77.331599,Commercial Plot,Urban,yes,no,3932.51
+Mangalore,44922.0,12.950857,74.801781,Commercial Plot,Commercial,yes,yes,4870.72
+Salem,39842.0,11.610833,78.052596,Agricultural,Rural,no,no,39.66
+Madurai,272511.0,9.813066,78.170638,Agricultural,Rural,no,no,50.14
+Visakhapatnam,58182.0,17.821408,83.306053,Vacant,Commercial,yes,yes,7948.97
+Mangalore,63925.0,12.870168,74.956702,Development,Commercial,yes,yes,4792.22
+Coimbatore,54066.0,10.971503,76.826437,Development,Semi-Urban,yes,yes,2078.68
+Nashik,32310.0,19.929619,73.804893,Vacant,Rural,no,no,265.35
+Pune,19006.0,18.492472,73.98721,Vacant,Rural,no,yes,380.33
+Salem,40759.0,11.712282,78.255578,Commercial Plot,Semi-Urban,yes,yes,721.52
+Pune,25079.0,18.456689,73.920942,Development,Commercial,yes,no,7676.88
+Kochi,56201.0,10.003618,76.345762,Vacant,Urban,yes,yes,5590.78
+Nashik,34991.0,19.894104,73.933317,Residential Plot,Urban,yes,no,2568.46
+Kochi,42757.0,9.826272,76.164507,Commercial Plot,Urban,no,yes,9351.14
+Coimbatore,26422.0,11.066279,76.919544,Commercial Plot,Semi-Urban,yes,yes,1389.06
+Erode,59675.0,11.453948,77.621541,Vacant,Urban,yes,yes,1615.9
+Aurangabad,20254.0,19.80171,75.267277,Vacant,Rural,no,no,53.49
+Chennai,14779.0,13.087973,80.157001,Residential Plot,Urban,yes,yes,10377.83
+Tirupur,57735.0,11.135554,77.45201,Commercial Plot,Commercial,no,yes,3184.81
+Mangalore,49483.0,12.951021,74.775916,Commercial Plot,Urban,yes,no,3696.61
+Aurangabad,18679.0,20.001946,75.26223,Vacant,Rural,no,yes,209.97
+Visakhapatnam,46469.0,17.636151,83.091842,Vacant,Rural,yes,no,348.56
+Coimbatore,40744.0,10.878768,76.913143,Industrial,Semi-Urban,yes,no,1400.77
+Mangalore,16174.0,12.937209,74.91226,Vacant,Rural,yes,no,229.93
+Vellore,43915.0,13.015465,79.27183,Commercial Plot,Semi-Urban,yes,no,287.42
+Chennai,12846.0,12.996971,80.160394,Vacant,Commercial,no,yes,15568.81
+Salem,60230.0,11.786823,78.243989,Residential Plot,Urban,yes,yes,2088.81
+Chennai,26153.0,12.94233,80.215336,Vacant,Semi-Urban,no,no,1629.25
+Hyderabad,39374.0,17.484021,78.562104,Commercial Plot,Commercial,no,yes,12420.23
+Mangalore,9428.0,13.00654,74.701716,Industrial,Semi-Urban,yes,yes,891.85
+Hyderabad,66883.0,17.383414,78.43356,Development,Commercial,yes,no,18756.06
+Aurangabad,22584.0,19.932993,75.216828,Vacant,Rural,yes,yes,145.18
+Vellore,79490.0,12.999888,79.23195,Development,Urban,no,yes,975.14
+Pune,31079.0,18.376081,73.800808,Residential Plot,Semi-Urban,yes,yes,2848.17
+Pune,64037.0,18.548517,73.858894,Vacant,Rural,no,yes,254.15
+Trichy,9923.0,10.923302,78.767737,Vacant,Rural,no,yes,131.71
+Erode,63167.0,11.2666,77.707209,Vacant,Rural,no,yes,35.39
+Tirunelveli,51530.0,8.755631,77.872696,Vacant,Semi-Urban,yes,yes,426.56
+Madurai,62130.0,9.860918,78.051315,Commercial Plot,Semi-Urban,yes,yes,695.84
+Tirunelveli,19421.0,8.652265,77.805306,Vacant,Rural,yes,yes,30.98
+Hyderabad,53983.0,17.467241,78.556517,Vacant,Rural,yes,no,299.93
+Coimbatore,406970.0,10.913166,77.084764,Agricultural,Semi-Urban,yes,yes,747.53
+Chennai,1457.0,13.071488,80.383046,Vacant,Urban,yes,yes,11133.6
+Madurai,397085.0,9.975862,78.209243,Agricultural,Rural,no,yes,162.57
+Chennai,62566.0,13.058556,80.255463,Vacant,Semi-Urban,no,yes,1640.68
+Mangalore,147633.0,12.985088,74.926079,Agricultural,Semi-Urban,no,yes,735.12
+Hyderabad,40389.0,17.290726,78.52735,Commercial Plot,Semi-Urban,yes,yes,2291.41
+Mangalore,215202.0,12.830148,74.759272,Agricultural,Semi-Urban,yes,yes,508.69
+Tirunelveli,43606.0,8.77529,77.688893,Commercial Plot,Semi-Urban,no,yes,483.71
+Thiruvananthapuram,24591.0,8.43967,76.958714,Commercial Plot,Urban,no,yes,3742.97
+Bangalore,40211.0,12.867461,77.672346,Commercial Plot,Urban,no,no,16438.48
+Erode,44442.0,11.397655,77.652721,Vacant,Semi-Urban,no,yes,471.67
+Salem,136097.0,11.587419,78.16138,Agricultural,Semi-Urban,no,no,329.27
+Erode,10276.0,11.47429,77.588565,Residential Plot,Urban,no,yes,1163.35
+Coimbatore,86730.0,10.916191,76.806447,Development,Commercial,no,yes,4112.39
+Salem,12454.0,11.552184,78.256538,Vacant,Semi-Urban,no,yes,379.93
+Chennai,199074.0,13.207064,80.258356,Agricultural,Semi-Urban,no,no,1197.13
+Mysore,15960.0,12.222577,76.739889,Vacant,Rural,yes,no,109.85
+Vellore,73135.0,12.846993,79.20242,Development,Semi-Urban,yes,yes,456.64
+Vijayawada,241315.0,16.38716,80.608269,Agricultural,Semi-Urban,yes,no,859.71
+Hyderabad,41330.0,17.475015,78.615677,Commercial Plot,Semi-Urban,no,yes,2860.13
+Nashik,52883.0,20.040377,73.920571,Commercial Plot,Urban,yes,yes,1291.3
+Visakhapatnam,356684.0,17.818072,83.093712,Agricultural,Rural,yes,yes,93.61
+Madurai,59170.0,9.794469,78.09208,Vacant,Rural,no,yes,92.96
+Bangalore,42395.0,12.918058,77.587289,Vacant,Semi-Urban,yes,yes,5182.41
+Vellore,43879.0,12.972961,79.126699,Residential Plot,Urban,yes,yes,2812.37
+Salem,30420.0,11.561813,78.161252,Vacant,Rural,yes,yes,279.14
+Coimbatore,59111.0,10.945387,77.028169,Vacant,Commercial,yes,yes,2049.91
+Hyderabad,49874.0,17.532746,78.596814,Industrial,Semi-Urban,yes,yes,4287.95
+Tirunelveli,355875.0,8.694518,77.905881,Agricultural,Rural,no,no,37.07
+Bangalore,998.0,12.925152,77.477867,Vacant,Rural,yes,yes,419.05
+Aurangabad,32218.0,19.98709,75.31879,Development,Urban,yes,yes,2667.83
+Tirunelveli,28226.0,8.762079,77.69592,Residential Plot,Urban,no,no,484.92
+Visakhapatnam,80585.0,17.607765,83.163901,Agricultural,Rural,no,no,95.58
+Thiruvananthapuram,50425.0,8.528086,76.863908,Vacant,Rural,no,no,370.22
+Tirupur,15927.0,10.997498,77.266296,Vacant,Semi-Urban,yes,yes,228.71
+Pune,42535.0,18.651968,73.962018,Vacant,Rural,yes,yes,283.74
+Erode,1921.0,11.298775,77.623728,Vacant,Semi-Urban,yes,no,476.42
+Tirunelveli,51500.0,8.590008,77.773609,Vacant,Rural,no,no,89.74
+Tirupur,381968.0,11.249947,77.350356,Agricultural,Rural,no,no,112.81
+Mangalore,62921.0,12.758457,74.826879,Vacant,Semi-Urban,yes,yes,1570.29
+Tirunelveli,423477.0,8.733174,77.652039,Agricultural,Rural,yes,no,43.34
+Kochi,38694.0,9.937813,76.228413,Vacant,Urban,yes,no,7147.02
+Bangalore,72430.0,12.973265,77.57366,Commercial Plot,Urban,no,no,16763.97
+Trichy,26074.0,10.916082,78.627848,Development,Urban,no,yes,1707.1
+Pune,11894.0,18.645573,73.740363,Commercial Plot,Semi-Urban,yes,yes,2795.05
+Thiruvananthapuram,35121.0,8.422639,76.850937,Development,Semi-Urban,no,no,1815.34
+Kochi,50668.0,9.955379,76.402762,Agricultural,Rural,no,no,83.62
+Salem,38102.0,11.751302,78.120483,Vacant,Rural,yes,no,186.52
+Mangalore,28607.0,12.743592,74.709974,Development,Commercial,no,no,2333.27
+Visakhapatnam,16786.0,17.616758,83.313386,Commercial Plot,Urban,no,yes,10392.99
+Chennai,47644.0,13.033678,80.148524,Development,Urban,yes,yes,17078.63
+Tirupur,62895.0,11.240216,77.275022,Agricultural,Rural,no,no,131.18
+Vellore,62428.0,12.894299,79.01727,Residential Plot,Urban,yes,yes,1506.32
+Pune,41914.0,18.570736,73.846318,Residential Plot,Semi-Urban,no,no,2878.53
+Vijayawada,54440.0,16.358742,80.693006,Development,Semi-Urban,yes,no,2009.45
+Thiruvananthapuram,82499.0,8.385427,76.901898,Commercial Plot,Semi-Urban,no,yes,2826.65
+Nashik,37445.0,20.021893,73.81491,Vacant,Rural,no,yes,91.31
+Aurangabad,22702.0,19.912134,75.269025,Development,Semi-Urban,yes,yes,955.04
+Thiruvananthapuram,94116.0,8.613881,76.930096,Agricultural,Rural,no,no,106.58
+Visakhapatnam,20925.0,17.576854,83.314489,Residential Plot,Urban,no,yes,2968.96
+Nashik,87084.0,19.921005,73.702367,Development,Semi-Urban,yes,yes,1287.93
+Trichy,51608.0,10.846483,78.831058,Commercial Plot,Urban,yes,yes,3493.78
+Kochi,369434.0,10.068798,76.167892,Agricultural,Rural,yes,no,223.08
+Erode,55007.0,11.29395,77.781211,Vacant,Rural,no,no,97.99
+Aurangabad,84458.0,20.018468,75.234137,Commercial Plot,Semi-Urban,yes,yes,565.02
+Chennai,247464.0,13.124528,80.128203,Agricultural,Semi-Urban,yes,no,771.66
+Chennai,11046.0,13.019516,80.144638,Residential Plot,Urban,no,yes,8964.47
+Mysore,268933.0,12.377062,76.739936,Agricultural,Rural,no,no,152.49
+Vellore,44382.0,13.0631,79.071307,Vacant,Semi-Urban,yes,yes,592.79
+Kochi,42550.0,9.851406,76.317876,Vacant,Rural,no,no,348.67
+Erode,34628.0,11.420345,77.714073,Commercial Plot,Urban,no,no,1318.8
+Mangalore,48888.0,12.77029,74.972421,Development,Semi-Urban,yes,yes,976.59
+Mysore,51359.0,12.436677,76.672579,Vacant,Rural,yes,no,141.73
+Tirunelveli,245295.0,8.69416,77.622767,Agricultural,Semi-Urban,yes,no,205.79
+Coimbatore,12939.0,10.904188,77.075814,Vacant,Rural,no,no,283.43
+Vellore,40804.0,12.949908,79.241273,Agricultural,Rural,no,no,24.16
+Visakhapatnam,35807.0,17.651705,83.19427,Industrial,Semi-Urban,yes,yes,1997.49
+Nashik,56631.0,19.90637,73.878193,Commercial Plot,Urban,no,yes,3947.27
+Mangalore,32826.0,12.731042,74.946601,Commercial Plot,Commercial,yes,yes,3742.97
+Tirunelveli,54776.0,8.675206,77.721134,Vacant,Urban,yes,yes,943.55
+Thiruvananthapuram,8087.0,8.495287,76.787995,Vacant,Urban,yes,yes,4778.05
+Vellore,48236.0,12.803466,79.250026,Industrial,Semi-Urban,no,yes,492.14
+Thiruvananthapuram,29987.0,8.649853,76.951478,Vacant,Rural,no,no,149.12
+Pune,171494.0,18.580982,73.980539,Agricultural,Semi-Urban,no,yes,1214.7
+Hyderabad,7141.0,17.467534,78.583685,Vacant,Commercial,yes,no,12215.16
+Visakhapatnam,6697.0,17.54997,83.137942,Vacant,Commercial,yes,no,7557.12
+Kochi,46493.0,10.057906,76.29626,Commercial Plot,Urban,no,no,3126.11
+Nashik,360443.0,19.872833,73.790869,Agricultural,Semi-Urban,no,yes,403.87
+Vijayawada,69336.0,16.488915,80.563173,Commercial Plot,Urban,yes,no,3716.48
+Vijayawada,355301.0,16.392378,80.756102,Agricultural,Rural,no,yes,56.5
+Thiruvananthapuram,44188.0,8.6432,77.047231,Agricultural,Semi-Urban,yes,yes,637.49
+Visakhapatnam,15583.0,17.821311,83.319509,Vacant,Commercial,yes,yes,5418.82
+Madurai,40074.0,9.952942,78.066491,Residential Plot,Urban,yes,no,1396.81
+Erode,72926.0,11.489404,77.765791,Agricultural,Rural,yes,no,25.75
+Erode,195780.0,11.475077,77.837077,Agricultural,Rural,yes,no,38.65
+Bangalore,8628.0,12.935662,77.655701,Commercial Plot,Commercial,no,yes,16797.64
+Hyderabad,10310.0,17.517203,78.379203,Development,Commercial,no,yes,11941.05
+Nashik,299640.0,19.913044,73.720238,Agricultural,Rural,yes,yes,165.58
+Kochi,221104.0,9.972487,76.380853,Agricultural,Rural,yes,no,193.51
+Trichy,59829.0,10.798119,78.841796,Agricultural,Rural,no,yes,72.79
+Mangalore,11788.0,12.922052,74.904862,Vacant,Rural,yes,no,352.64
+Visakhapatnam,43091.0,17.780007,83.15278,Vacant,Commercial,yes,yes,8628.66
+Chennai,39291.0,13.211374,80.34728,Commercial Plot,Commercial,yes,no,25654.23
+Chennai,76797.0,13.044874,80.169165,Commercial Plot,Commercial,yes,no,7359.24
+Salem,34150.0,11.690437,78.002224,Vacant,Rural,no,yes,153.63
+Aurangabad,412002.0,20.00582,75.25324,Agricultural,Rural,no,no,20.06
+Madurai,10420.0,9.877569,78.224673,Vacant,Semi-Urban,yes,no,953.7
+Erode,38339.0,11.457053,77.678705,Vacant,Rural,no,yes,106.27
+Vijayawada,341881.0,16.372002,80.564956,Agricultural,Rural,no,yes,185.84
+Nashik,50360.0,19.869487,73.743059,Residential Plot,Urban,yes,no,833.9
+Trichy,287562.0,10.8089,78.78034,Agricultural,Rural,yes,no,60.92
+Bangalore,27102.0,12.845837,77.627089,Commercial Plot,Urban,yes,yes,13447.47
+Tirupur,40419.0,11.075094,77.302403,Vacant,Commercial,yes,no,2486.35
+Mysore,27646.0,12.416992,76.547605,Vacant,Rural,no,no,242.98
+Mangalore,52629.0,12.831382,74.73528,Vacant,Commercial,yes,yes,1782.45
+Visakhapatnam,18330.0,17.754129,83.217338,Vacant,Commercial,no,yes,4918.07
+Coimbatore,34212.0,11.102728,76.936718,Vacant,Urban,yes,yes,1342.41
+Salem,51772.0,11.559059,78.164852,Vacant,Semi-Urban,yes,no,587.42
+Vijayawada,10700.0,16.54446,80.646844,Vacant,Rural,yes,no,278.95
+Bangalore,37736.0,12.864575,77.641803,Commercial Plot,Urban,yes,yes,18495.46
+Madurai,31278.0,10.060212,78.237228,Vacant,Rural,no,no,256.18
+Coimbatore,164832.0,11.148571,76.840403,Agricultural,Rural,no,no,40.67
+Aurangabad,33070.0,19.813634,75.401787,Commercial Plot,Semi-Urban,yes,yes,504.96
+Trichy,344942.0,10.876933,78.760245,Agricultural,Rural,yes,no,56.59
+Chennai,18931.0,13.149328,80.336604,Commercial Plot,Commercial,yes,yes,24731.78
+Coimbatore,56380.0,10.88395,76.981053,Vacant,Semi-Urban,yes,yes,431.65
+Hyderabad,243955.0,17.412661,78.453351,Agricultural,Semi-Urban,no,yes,1729.22
+Thiruvananthapuram,33147.0,8.482581,77.045153,Development,Urban,yes,yes,6239.83
+Coimbatore,65195.0,11.16297,77.001993,Development,Urban,yes,yes,3078.45
+Coimbatore,59268.0,11.15475,77.026588,Development,Urban,yes,yes,5793.41
+Madurai,39109.0,9.942422,78.245041,Vacant,Urban,yes,no,2625.37
+Thiruvananthapuram,198097.0,8.409449,76.788758,Agricultural,Rural,no,no,91.33
+Erode,11432.0,11.290789,77.863192,Industrial,Semi-Urban,yes,yes,270.98
+Tirupur,7415.0,11.048246,77.479709,Vacant,Rural,no,yes,281.89
+Vellore,52761.0,13.062837,78.99887,Agricultural,Rural,no,no,88.35
+Tirunelveli,25627.0,8.588481,77.859831,Residential Plot,Semi-Urban,yes,no,234.64
+Erode,64585.0,11.442814,77.735637,Vacant,Rural,no,no,34.35
+Thiruvananthapuram,5690.0,8.564863,77.027911,Vacant,Urban,no,yes,1857.63
+Visakhapatnam,2400.0,17.682204,83.342303,Vacant,Rural,no,yes,79.56
+Tirupur,13806.0,11.094915,77.389931,Residential Plot,Urban,yes,yes,3553.39
+Tirunelveli,68438.0,8.791748,77.866857,Commercial Plot,Urban,yes,yes,1894.21
+Madurai,79291.0,10.06432,78.185307,Development,Urban,yes,yes,4229.02
+Chennai,61607.0,13.136844,80.299623,Residential Plot,Semi-Urban,yes,no,1872.46
+Salem,64059.0,11.54954,78.245643,Industrial,Semi-Urban,no,no,269.76
+Vellore,53360.0,12.932468,79.112343,Vacant,Rural,no,yes,126.16
+Pune,406260.0,18.386147,73.83069,Agricultural,Rural,no,yes,48.69
+Kochi,25903.0,9.927258,76.261933,Commercial Plot,Urban,no,yes,5049.6
+Aurangabad,56231.0,20.010847,75.292965,Vacant,Rural,no,no,90.31
+Vijayawada,6672.0,16.555553,80.692673,Vacant,Urban,yes,yes,3010.69
+Erode,42996.0,11.208032,77.824395,Vacant,Rural,no,no,117.51
+Mangalore,31325.0,12.952449,74.939002,Commercial Plot,Urban,yes,yes,4293.99
+Nashik,24977.0,20.085648,73.9332,Vacant,Rural,no,no,159.97
+Bangalore,16955.0,12.912026,77.50797,Development,Semi-Urban,yes,yes,2060.65
+Pune,11556.0,18.545511,73.945726,Vacant,Urban,yes,yes,9730.46
+Visakhapatnam,234260.0,17.745863,83.080599,Agricultural,Rural,yes,no,85.32
+Vijayawada,4421.0,16.497504,80.79421,Residential Plot,Urban,yes,yes,2540.87
+Bangalore,33721.0,12.846074,77.577534,Vacant,Rural,no,no,286.82
+Tirunelveli,430750.0,8.749982,77.642785,Agricultural,Semi-Urban,yes,yes,87.64
+Bangalore,342269.0,12.833343,77.656887,Agricultural,Rural,no,no,296.8
+Visakhapatnam,201029.0,17.564394,83.322683,Agricultural,Rural,yes,no,55.25
+Mysore,51813.0,12.26165,76.513882,Residential Plot,Urban,yes,yes,4043.35
+Mysore,14542.0,12.176577,76.743168,Development,Urban,yes,yes,2549.34
+Tirupur,35355.0,11.153272,77.226103,Residential Plot,Urban,yes,no,861.65
+Mangalore,54336.0,12.902486,74.819835,Development,Commercial,no,yes,5694.74
+Salem,46082.0,11.515103,78.131151,Vacant,Rural,no,yes,79.99
+Trichy,42459.0,10.866578,78.564392,Vacant,Semi-Urban,no,no,407.1
+Coimbatore,63537.0,11.030477,77.056179,Residential Plot,Semi-Urban,yes,yes,1131.69
+Pune,81477.0,18.537826,73.77416,Development,Commercial,yes,no,7862.61
+Hyderabad,60073.0,17.5287,78.42449,Vacant,Commercial,yes,yes,19017.29
+Vijayawada,9397.0,16.492212,80.68065,Industrial,Semi-Urban,no,no,487.58
+Vellore,65706.0,12.840972,79.101861,Development,Semi-Urban,yes,yes,499.54
+Thiruvananthapuram,429542.0,8.521899,76.788587,Agricultural,Rural,no,no,139.83
+Mysore,78152.0,12.380052,76.749139,Development,Semi-Urban,yes,yes,1833.99
+Vellore,42865.0,12.904228,79.222878,Vacant,Semi-Urban,yes,yes,215.12
+Visakhapatnam,9325.0,17.777045,83.278718,Vacant,Rural,no,no,150.96
+Salem,39277.0,11.646046,78.136609,Industrial,Semi-Urban,yes,no,432.64
+Madurai,307383.0,9.867187,78.038961,Agricultural,Rural,no,yes,144.82
+Vijayawada,327213.0,16.518664,80.688783,Agricultural,Rural,no,yes,143.16
+Nashik,252396.0,19.92819,73.707303,Agricultural,Rural,no,yes,118.93
+Bangalore,24409.0,13.060499,77.622026,Vacant,Commercial,yes,yes,12723.81
+Vijayawada,68489.0,16.359605,80.646924,Commercial Plot,Semi-Urban,no,yes,793.08
+Mangalore,3777.0,12.870911,74.719015,Vacant,Commercial,no,yes,2005.34
+Coimbatore,21785.0,10.926672,77.081336,Vacant,Rural,yes,yes,81.66
+Nashik,184436.0,19.879975,73.928943,Agricultural,Rural,no,no,44.58
+Erode,1049.0,11.271725,77.690052,Residential Plot,Urban,no,yes,1417.17
+Erode,41886.0,11.34239,77.604149,Agricultural,Rural,no,no,32.09
+Thiruvananthapuram,39373.0,8.620169,76.978687,Vacant,Semi-Urban,no,no,827.61
+Aurangabad,33727.0,19.81868,75.301275,Vacant,Semi-Urban,yes,yes,437.49
+Visakhapatnam,83763.0,17.797265,83.086367,Commercial Plot,Semi-Urban,yes,yes,3426.16
+Mysore,425112.0,12.233182,76.489869,Agricultural,Semi-Urban,yes,yes,528.46
+Mangalore,85977.0,12.758491,74.947848,Commercial Plot,Commercial,no,yes,6984.48
+Bangalore,41439.0,13.098846,77.613948,Vacant,Commercial,yes,yes,14221.65
+Erode,39988.0,11.37269,77.608349,Residential Plot,Urban,yes,yes,1843.6
+Salem,71251.0,11.610617,78.02738,Development,Urban,no,no,1216.33
+Hyderabad,8026.0,17.38514,78.44019,Vacant,Urban,yes,yes,8957.57
+Trichy,24016.0,10.740015,78.580956,Commercial Plot,Urban,yes,yes,2600.04
+Visakhapatnam,44999.0,17.777969,83.110438,Residential Plot,Urban,yes,yes,3403.06
+Hyderabad,57567.0,17.43787,78.483538,Vacant,Commercial,no,no,8461.29
+Hyderabad,660.0,17.262928,78.491384,Vacant,Commercial,yes,no,14479.67
+Tirupur,21804.0,11.004808,77.331947,Vacant,Rural,no,no,101.6
+Vijayawada,35362.0,16.592987,80.649983,Vacant,Rural,no,no,153.39
+Visakhapatnam,617.0,17.720913,83.175548,Residential Plot,Semi-Urban,no,no,861.85
+Trichy,39830.0,10.659471,78.778485,Residential Plot,Urban,yes,yes,1587.12
+Mangalore,181923.0,12.831785,74.786316,Agricultural,Rural,yes,yes,213.88
+Madurai,10380.0,10.060776,78.037067,Residential Plot,Urban,yes,yes,1260.29
+Pune,56302.0,18.539005,73.788186,Commercial Plot,Urban,yes,yes,12757.62
+Chennai,10873.0,13.10776,80.229299,Vacant,Urban,yes,yes,12006.83
+Mangalore,10874.0,12.852182,74.883841,Residential Plot,Urban,no,yes,3165.78
+Bangalore,251974.0,13.001723,77.550094,Agricultural,Semi-Urban,yes,yes,2790.61
+Vellore,390126.0,12.797293,79.106202,Agricultural,Rural,yes,no,107.53
+Hyderabad,33273.0,17.251083,78.444412,Vacant,Urban,yes,yes,13737.87
+Hyderabad,49847.0,17.383491,78.542109,Vacant,Rural,no,yes,103.23
+Kochi,24502.0,9.979024,76.407621,Development,Commercial,yes,yes,11462.47
+Mangalore,34586.0,13.016604,74.730931,Residential Plot,Urban,yes,no,5156.21
+Bangalore,17441.0,13.018949,77.652641,Commercial Plot,Urban,yes,yes,22604.6
+Mysore,23646.0,12.238823,76.608867,Vacant,Rural,no,yes,243.8
+Erode,16081.0,11.383178,77.825647,Industrial,Semi-Urban,no,yes,179.78
+Nashik,294983.0,20.102908,73.713954,Agricultural,Semi-Urban,yes,no,406.6
+Coimbatore,30029.0,10.934192,76.865539,Residential Plot,Urban,yes,no,3684.78
+Thiruvananthapuram,25313.0,8.601342,77.074972,Industrial,Semi-Urban,no,yes,1384.73
+Trichy,27510.0,10.757166,78.707977,Vacant,Rural,no,no,44.54
+Nashik,3381.0,20.107819,73.913999,Development,Semi-Urban,yes,no,1263.22
+Bangalore,63291.0,12.990076,77.543494,Vacant,Urban,yes,no,15157.6
+Vellore,22634.0,12.946485,79.197497,Industrial,Semi-Urban,yes,yes,520.24
+Tirupur,2663.0,11.185173,77.421341,Industrial,Semi-Urban,no,no,184.98
+Coimbatore,9088.0,11.145505,77.08652,Vacant,Urban,yes,yes,3248.74
+Salem,42493.0,11.650509,78.202215,Industrial,Semi-Urban,no,yes,367.23
+Tirunelveli,82169.0,8.659515,77.892199,Development,Urban,yes,no,600.1
+Madurai,860.0,10.041041,78.142501,Vacant,Rural,no,no,96.46
+Pune,67257.0,18.559108,73.892621,Agricultural,Rural,no,yes,61.41
+Chennai,78816.0,12.960679,80.34677,Commercial Plot,Urban,no,no,10497.21
+Hyderabad,283633.0,17.533187,78.569389,Agricultural,Semi-Urban,no,no,1107.7
+Trichy,18387.0,10.913901,78.801333,Commercial Plot,Semi-Urban,yes,yes,361.57
+Hyderabad,11721.0,17.322627,78.419156,Commercial Plot,Commercial,no,no,11243.79
+Bangalore,80564.0,12.941219,77.663484,Development,Commercial,yes,yes,14681.71
+Mysore,171830.0,12.389755,76.690435,Agricultural,Rural,no,no,80.43
+Nashik,63880.0,20.002256,73.641684,Vacant,Rural,yes,yes,199.1
+Vellore,117439.0,12.811243,79.009525,Agricultural,Rural,no,no,22.2
+Mysore,24748.0,12.277042,76.773324,Vacant,Urban,yes,yes,2174.96
+Tirunelveli,389904.0,8.705814,77.65836,Agricultural,Semi-Urban,no,no,158.39
+Aurangabad,14895.0,19.9203,75.206589,Vacant,Rural,no,no,40.95
+Aurangabad,8548.0,19.816539,75.341237,Commercial Plot,Urban,no,yes,1589.67
+Vijayawada,31675.0,16.495378,80.675507,Agricultural,Semi-Urban,no,yes,383.35
+Trichy,46386.0,10.919088,78.733764,Vacant,Rural,no,no,122.31
+Kochi,30631.0,9.922831,76.349859,Vacant,Rural,yes,no,384.87
+Madurai,54041.0,9.828041,78.126324,Vacant,Rural,no,no,209.0
+Aurangabad,62666.0,19.889109,75.390733,Development,Urban,yes,yes,2250.95
+Pune,44042.0,18.37318,73.877089,Development,Urban,yes,no,13262.15
+Salem,2098.0,11.679329,78.132448,Development,Semi-Urban,yes,yes,977.02
+Chennai,21399.0,13.224635,80.23426,Development,Commercial,yes,yes,16809.15
+Vellore,15737.0,12.913994,79.054768,Vacant,Semi-Urban,yes,no,430.5
+Nashik,41963.0,20.015995,73.747478,Development,Semi-Urban,yes,yes,491.63
+Salem,61364.0,11.582545,78.049832,Commercial Plot,Urban,yes,yes,3486.56
+Erode,23110.0,11.266717,77.808726,Industrial,Semi-Urban,no,yes,264.73

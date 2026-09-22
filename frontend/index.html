@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Invest — AI Financial Risk Platform</title>
+  <meta name="description"
+    content="Smart Invest: AI-powered real estate investment risk management. Property valuation, market forecasting, sentiment analysis, and autonomous portfolio management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <style>
+    /* ===== CORE LAYOUT ===== */
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ===== AUTH SCREEN ===== */
+    #auth-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at 20% 50%, rgba(0, 212, 255, 0.07) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(30, 58, 95, 0.5) 0%, transparent 60%), var(--bg-primary);
+    }
+
+    .auth-card {
+      background: rgba(16, 34, 58, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .auth-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #00D4FF, #7B61FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+
+    .auth-tagline {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .tab-row {
+      display: flex;
+      background: var(--bg-secondary);
+      border-radius: 10px;
+      padding: 4px;
+      margin-bottom: 1.5rem;
+      gap: 4px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 0.55rem;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .form-input {
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    .btn-primary {
+      width: 100%;
+      background: linear-gradient(135deg, #00D4FF, #0099BB);
+      color: #000;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      padding: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(0, 212, 255, 0.35);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .auth-error {
+      color: var(--danger);
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      text-align: center;
+      min-height: 1.2rem;
+    }
+
+    .auth-demo {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .auth-demo code {
+      color: var(--accent);
+    }
+
+    /* ===== APP SHELL ===== */
+    #app-shell {
+      display: none;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    #app-shell.active {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* ===== SIDEBAR ===== */
+    #sidebar {
+      width: 240px;
+      min-width: 240px;
+      background: var(--bg-secondary);
+      border-right: 1px solid var(--border-color);
+      display: flex;
+      flex-direction: column;
+      transition: width 0.3s ease, min-width 0.3s ease;
+      overflow: hidden;
+    }
+
+    #sidebar.collapsed {
+      width: 68px;
+      min-width: 68px;
+    }
+
+    #sidebar.collapsed .nav-label,
+    #sidebar.collapsed .sidebar-logo-text,
+    #sidebar.collapsed .sidebar-footer-text {
+      display: none;
+    }
+
+    #sidebar.collapsed .sidebar-logo {
+      justify-content: center;
+    }
+
+    .sidebar-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1.25rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #00D4FF, #7B61FF);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #000;
+      flex-shrink: 0;
+    }
+
+    .sidebar-logo-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00D4FF, #7B61FF);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+    }
+
+    .sidebar-nav {
+      flex: 1;
+      padding: 1rem 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    .sidebar-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 0.75rem;
+      color: var(--text-secondary);
+      border-radius: 9px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      border: none;
+      background: transparent;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    .sidebar-link:hover {
+      color: var(--text-primary);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .sidebar-link.active {
+      color: var(--accent);
+      background: var(--accent-glow);
+      border-left: 3px solid var(--accent);
+    }
+
+    .nav-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 20px;
+      text-align: center;
+    }
+
+    .sidebar-section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      padding: 0.5rem 0.75rem 0.3rem;
+      opacity: 0.6;
+    }
+
+    .sidebar-footer {
+      padding: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .user-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .user-avatar {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #00D4FF, #7B61FF);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #000;
+      flex-shrink: 0;
+    }
+
+    .sidebar-footer-text {
+      font-size: 0.8rem;
+    }
+
+    .user-name {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .user-role {
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+    }
+
+    /* ===== MAIN AREA ===== */
+    #main-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ===== OFFLINE BANNER ===== */
+    #backend-offline-banner {
+      display: none;
+      background: var(--danger);
+      color: #fff;
+      padding: 0.6rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+
+    /* ===== TICKER BAR ===== */
+    .ticker-bar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.45rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      overflow: hidden;
+      font-size: 0.78rem;
+    }
+
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .ticker-name {
+      color: var(--text-secondary);
+    }
+
+    .ticker-value {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .ticker-change.positive {
+      color: var(--success);
+    }
+
+    .ticker-change.negative {
+      color: var(--danger);
+    }
+
+    /* ===== TOPBAR ===== */
+    .topbar {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hamburger {
+      background: transparent;
+      border: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 1.2rem;
+      padding: 0.25rem;
+      transition: color 0.2s;
+    }
+
+    .hamburger:hover {
+      color: var(--accent);
+    }
+
+    .page-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: var(--bg-card, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .notif-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 700;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ===== PAGE CONTENT ===== */
+    #page-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .metric-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.25rem 1.5rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .metric-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .metric-change {
+      font-size: 0.78rem;
+      margin-top: 0.4rem;
+    }
+
+    .metric-change.pos {
+      color: var(--success);
+    }
+
+    .metric-change.neg {
+      color: var(--danger);
+    }
+
+    .metric-icon {
+      float: right;
+      font-size: 2rem;
+      opacity: 0.3;
+    }
+
+    /* ===== STATUS BADGES ===== */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .badge-success {
+      background: rgba(0, 200, 83, 0.15);
+      color: var(--success);
+    }
+
+    .badge-danger {
+      background: rgba(255, 23, 68, 0.15);
+      color: var(--danger);
+    }
+
+    .badge-warning {
+      background: rgba(255, 179, 0, 0.15);
+      color: var(--warning);
+    }
+
+    .badge-info {
+      background: rgba(0, 212, 255, 0.15);
+      color: var(--accent);
+    }
+
+    /* ===== FORM CONTROLS ===== */
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-select {
+      width: 100%;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .form-select:focus {
+      border-color: var(--accent);
+    }
+
+    .range-slider {
+      width: 100%;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .btn-accent {
+      background: linear-gradient(135deg, #00D4FF, #0099BB);
+      color: #000;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: none;
+      border-radius: 10px;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-accent:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3);
+    }
+
+    .btn-success {
+      background: linear-gradient(135deg, #00C853, #007A33);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #FF1744, #B2102F);
+      color: #fff;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ===== TABLES ===== */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    thead th {
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 0.72rem;
+      padding: 0.8rem 1rem;
+      text-align: left;
+    }
+
+    tbody tr {
+      border-top: 1px solid var(--border-color);
+      transition: background 0.15s;
+    }
+
+    tbody tr:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
+    }
+
+    /* ===== NOTIFICATION PANEL ===== */
+    .notif-panel {
+      position: fixed;
+      top: 0;
+      right: -360px;
+      width: 340px;
+      height: 100vh;
+      background: var(--bg-secondary);
+      border-left: 1px solid var(--border-color);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .notif-panel.open {
+      right: 0;
+    }
+
+    .notif-header {
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+    }
+
+    .notif-item {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      transition: background 0.15s;
+    }
+
+    .notif-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .notif-item.unread {
+      border-left: 3px solid var(--accent);
+    }
+
+    .notif-msg {
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .notif-time {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+    }
+
+    /* ===== CHAT INTERFACE ===== */
+    .chat-container {
+      display: flex;
+      flex-direction: column;
+      height: 520px;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+
+    .chat-bubble {
+      max-width: 78%;
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .chat-bubble.user {
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(123, 97, 255, 0.15));
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+    }
+
+    .chat-bubble.bot {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+    }
+
+    .chat-confidence {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      margin-top: 0.4rem;
+    }
+
+    .chat-input-row {
+      display: flex;
+      gap: 0.75rem;
+      padding: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .chat-input {
+      flex: 1;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .chat-input:focus {
+      border-color: var(--accent);
+    }
+
+    .chat-send-btn {
+      background: linear-gradient(135deg, #00D4FF, #0099BB);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      padding: 0.75rem 1.2rem;
+      cursor: pointer;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .chat-send-btn:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-bar-wrap {
+      background: var(--bg-primary);
+      border-radius: 999px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #00D4FF, #7B61FF);
+      transition: width 0.6s ease;
+    }
+
+    /* ===== SENTIMENT METER ===== */
+    .sentiment-meter {
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    .sentiment-score {
+      font-size: 3.5rem;
+      font-weight: 800;
+    }
+
+    .sentiment-label {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 0.3rem;
+    }
+
+    /* ===== LOADING SPINNER ===== */
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 3px solid var(--border-color);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 1rem auto;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ===== RISK GAUGE ===== */
+    .risk-gauge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .risk-score-big {
+      font-size: 2.8rem;
+      font-weight: 800;
+    }
+
+    .risk-low {
+      color: var(--success);
+    }
+
+    .risk-medium {
+      color: var(--warning);
+    }
+
+    .risk-high {
+      color: var(--danger);
+    }
+
+    /* ===== AGENT PANEL ===== */
+    .agent-status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .agent-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+      animation: blink 2s infinite;
+    }
+
+    .agent-dot.off {
+      background: var(--text-secondary);
+      box-shadow: none;
+      animation: none;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    /* ===== FEATURE IMPORTANCE BAR ===== */
+    .feat-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feat-name {
+      width: 90px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .feat-bar-wrap {
+      flex: 1;
+      background: var(--bg-primary);
+      border-radius: 999px;
+      height: 10px;
+    }
+
+    .feat-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #00D4FF, #7B61FF);
+    }
+
+    .feat-pct {
+      width: 36px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      #sidebar {
+        position: fixed;
+        z-index: 500;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+      }
+
+      #sidebar.mobile-open {
+        transform: translateX(0);
+      }
+
+      .grid-4 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== LIGHT THEME OVERRIDES ===== */
+    [data-theme="light"] .auth-card {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    [data-theme="light"] .chat-bubble.bot {
+      background: #F9FAFB;
+    }
+
+    [data-theme="light"] tbody tr:hover {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    [data-theme="light"] .form-select,
+    [data-theme="light"] .form-input,
+    [data-theme="light"] .chat-input {
+      background: #F9FAFB;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== AUTH SCREEN ===== -->
+  <div id="auth-screen">
+    <div class="auth-card animate-slide">
+      <div class="auth-logo">⬡ Smart Invest</div>
+      <p class="auth-tagline">AI-Powered Real Estate Risk Management</p>
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="tab-btn" onclick="switchAuthTab('register')">Sign Up</button>
+      </div>
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input class="form-input" type="email" id="login-email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-input" type="password" id="login-password" placeholder="••••••••" required />
+        </div>
+        <div class="form-group">
+          <label>🌍 Select Country</label>
+          <select class="form-select" id="login-country" required>
+            <option value="" disabled selected>— Select Country —</option>
+            <option value="India">India</option>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Australia">Australia</option>
+            <option value="Canada">Canada</option>
+            <option value="Singapore">Singapore</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" id="login-btn">Sign In to Smart Invest</button>
+        <div id="login-error" class="auth-error"></div>
+      </form>
+      <!-- Register Form -->
+      <form id="register-form" style="display:none" onsubmit="handleRegister(event)">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input class="form-input" type="text" id="reg-name" placeholder="John Smith" required />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input class="form-input" type="email" id="reg-email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input class="form-input" type="password" id="reg-password" placeholder="min 8 characters" required />
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input class="form-input" type="password" id="reg-confirm-password" placeholder="re-enter password"
+            required />
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <select class="form-select" id="reg-role">
+            <option value="User">Investor (User)</option>
+            <option value="Manager">Portfolio Manager</option>
+            <option value="Admin">Administrator</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>🌍 Select Country</label>
+          <select class="form-select" id="reg-country" required>
+            <option value="" disabled selected>— Select Country —</option>
+            <option value="India">India</option>
+            <option value="United States">United States</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Australia">Australia</option>
+            <option value="Canada">Canada</option>
+            <option value="Singapore">Singapore</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-primary" id="reg-btn">Create Account &amp; Sign Up</button>
+        <div id="reg-error" class="auth-error"></div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ===== APP SHELL ===== -->
+  <div id="app-shell">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+      <div class="sidebar-logo">
+        <div class="logo-icon">SI</div>
+        <span class="sidebar-logo-text">Smart Invest</span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-section-label">Overview</div>
+        <button class="sidebar-link active" data-page="dashboard" onclick="navigate('dashboard')"><span
+            class="nav-icon">📊</span><span class="nav-label">Dashboard</span></button>
+        <div class="sidebar-section-label">Analysis</div>
+        <button class="sidebar-link" data-page="valuation" onclick="navigate('valuation')"><span
+            class="nav-icon">🏡</span><span class="nav-label">Property Valuation</span></button>
+        <button class="sidebar-link" data-page="market" onclick="navigate('market')"><span
+            class="nav-icon">📈</span><span class="nav-label">Market Analysis</span></button>
+        <button class="sidebar-link" data-page="sentiment" onclick="navigate('sentiment')"><span
+            class="nav-icon">🧠</span><span class="nav-label">Sentiment Analysis</span></button>
+        <div class="sidebar-section-label">AI Tools</div>
+        <button class="sidebar-link" data-page="assistant" onclick="navigate('assistant')"><span
+            class="nav-icon">🤖</span><span class="nav-label">AI Assistant</span></button>
+        <button class="sidebar-link" data-page="simulation" onclick="navigate('simulation')"><span
+            class="nav-icon">⚡</span><span class="nav-label">Scenario Simulation</span></button>
+        <div class="sidebar-section-label">Portfolio</div>
+        <button class="sidebar-link" data-page="portfolio" onclick="navigate('portfolio')"><span
+            class="nav-icon">💼</span><span class="nav-label">Portfolio Mgmt</span></button>
+        <button class="sidebar-link" data-page="reports" onclick="navigate('reports')"><span
+            class="nav-icon">📄</span><span class="nav-label">Reports</span></button>
+        <div class="sidebar-section-label">System</div>
+        <button class="sidebar-link" data-page="settings" onclick="navigate('settings')"><span
+            class="nav-icon">⚙️</span><span class="nav-label">Settings</span></button>
+      </div>
+      <div class="sidebar-footer">
+        <div class="user-badge">
+          <div class="user-avatar" id="sidebar-avatar">A</div>
+          <div class="sidebar-footer-text">
+            <div class="user-name" id="sidebar-name">Admin User</div>
+            <div class="user-role" id="sidebar-role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Area -->
+    <div id="main-area">
+      <!-- Offline Banner -->
+      <div id="backend-offline-banner">
+        ⚠️ Cannot connect to the Smart Invest backend server. Some features may be unavailable.
+      </div>
+
+      <!-- Ticker Bar -->
+      <div class="ticker-bar" id="ticker-bar">
+        <span style="font-size:0.72rem;color:var(--accent);font-weight:700;white-space:nowrap">LIVE ●</span>
+        <div id="ticker-items" style="display:flex;gap:2rem;overflow:hidden"></div>
+      </div>
+
+      <!-- Topbar -->
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="hamburger" onclick="toggleSidebar()">☰</button>
+          <span class="page-title" id="page-title">Dashboard</span>
+        </div>
+        <div class="topbar-right">
+          <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme" id="theme-btn">🌙</button>
+          <button class="icon-btn" onclick="toggleNotifications()" title="Notifications">
+            🔔
+            <span class="notif-badge" id="notif-badge">3</span>
+          </button>
+          <button class="icon-btn" onclick="logout()" title="Logout">🚪</button>
+        </div>
+      </div>
+
+      <!-- Page Content -->
+      <div id="page-content"></div>
+    </div>
+  </div>
+
+  <!-- Notification Panel -->
+  <div class="notif-panel" id="notif-panel">
+    <div class="notif-header">
+      <span>🔔 Notifications</span>
+      <button onclick="toggleNotifications()"
+        style="background:none;border:none;color:var(--text-secondary);cursor:pointer;font-size:1.2rem">✕</button>
+    </div>
+    <div id="notif-list"></div>
+  </div>
+
+  <script type="module" src="/map-entry.jsx"></script>
+  <script src="/app.js?v=1.0.3"></script>
+</body>
+
+</html>
