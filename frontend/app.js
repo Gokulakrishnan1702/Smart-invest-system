@@ -1263,10 +1263,37 @@ async function predictProperty(e) {
         </div>
         ${pred.data_source ? `
         <div style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:0.5rem">
-          Dataset Context: <strong style="color:var(--accent)">${pred.data_source}</strong>
+          Dataset Engine: <strong style="color:var(--accent)">${pred.data_source}</strong>
         </div>` : ''}
         <div style="color:var(--text-secondary);font-size:0.85rem;margin-bottom:1rem">
           📅 Projected Value in <strong>${holdYearsVal} year(s)</strong>: <strong style="color:var(--accent)">${formatINR(projectedPrice)}</strong> (${formatINR(projectedPerUnit, false, 2)}/${displayUnit})
+        </div>
+        <!-- AI Investment Intelligence Metrics -->
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:0.75rem;margin-bottom:1rem">
+          <div style="background:var(--bg-secondary);border-radius:10px;padding:0.75rem">
+            <div style="font-size:0.68rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em">Investment Potential</div>
+            <div style="font-size:1.15rem;font-weight:800;margin-top:0.25rem;color:${pred.investment_potential === 'High' ? 'var(--success)' : pred.investment_potential === 'Low' ? 'var(--danger)' : 'var(--warning)'}">
+              ${pred.investment_potential || 'Medium'}
+            </div>
+          </div>
+          <div style="background:var(--bg-secondary);border-radius:10px;padding:0.75rem">
+            <div style="font-size:0.68rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em">Expected ROI</div>
+            <div style="font-size:1.15rem;font-weight:800;margin-top:0.25rem;color:var(--success)">
+              ${pred.roi_percentage ? `${pred.roi_percentage > 0 ? '+' : ''}${pred.roi_percentage}%` : 'N/A'}
+            </div>
+          </div>
+          <div style="background:var(--bg-secondary);border-radius:10px;padding:0.75rem">
+            <div style="font-size:0.68rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em">Demand Score</div>
+            <div style="font-size:1.15rem;font-weight:800;margin-top:0.25rem;color:var(--accent)">
+              ${pred.demand_score ? `${pred.demand_score}/100` : '70/100'}
+            </div>
+          </div>
+          <div style="background:var(--bg-secondary);border-radius:10px;padding:0.75rem">
+            <div style="font-size:0.68rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.04em">Price Trend</div>
+            <div style="font-size:1.15rem;font-weight:800;margin-top:0.25rem;color:${pred.price_trend === 'Increasing' ? 'var(--success)' : pred.price_trend === 'Decreasing' ? 'var(--danger)' : 'var(--warning)'}">
+              ${pred.price_trend === 'Increasing' ? '↗ Increasing' : pred.price_trend === 'Decreasing' ? '↘ Decreasing' : '➔ Stable'}
+            </div>
+          </div>
         </div>
         ${plHtml}
         <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1rem">

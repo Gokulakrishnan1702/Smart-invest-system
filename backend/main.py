@@ -549,26 +549,34 @@ async def predict_property_valuation(
 @app.get("/api/properties/suggest-locations")
 def suggest_locations(query: str = ""):
     import pandas as pd
-    from ml_models.valuation import DATASET_PATH
+    from ml_models.valuation import DATASET_PATH, REALISTIC_DATASET_PATH
     if not query or len(query.strip()) < 2:
         return []
     
-    if not os.path.exists(DATASET_PATH):
-        return []
-        
-    try:
-        # Load columns for memory efficiency
-        df = pd.read_csv(DATASET_PATH, usecols=["location"]).dropna()
-        q = query.lower().strip()
-        
-        # Filter for location strings matching query
-        matches = df[df["location"].str.lower().str.contains(q, na=False)]
-        
-        # Extract unique matches, limit to top 15 results
-        unique_locations = matches["location"].unique()[:15].tolist()
-        return unique_locations
-    except Exception as e:
-        return []
+    q = query.lower().strip()
+    suggestions = []
+    
+    # 1. Search smart_invest_realistic_dataset.csv districts first
+    if os.path.exists(REALISTIC_DATASET_PATH):
+        try:
+            df_real = pd.read_csv(REALISTIC_DATASET_PATH, usecols=["district"]).dropna()
+            matches = df_real[df_real["district"].str.lower().str.contains(q, na=False)]["district"].unique().tolist()
+            suggestions.extend([m.title() for m in matches])
+        except Exception:
+            pass
+
+    # 2. Also search world_real_estate_data.csv locations
+    if len(suggestions) < 15 and os.path.exists(DATASET_PATH):
+        try:
+            df_world = pd.read_csv(DATASET_PATH, usecols=["location"]).dropna()
+            matches_world = df_world[df_world["location"].str.lower().str.contains(q, na=False)]["location"].unique()[:15].tolist()
+            for m in matches_world:
+                if m not in suggestions:
+                    suggestions.append(m)
+        except Exception:
+            pass
+            
+    return suggestions[:15]
 
 @app.post("/api/properties/upload")
 def bulk_upload_properties(file: UploadFile = File(...), current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -638,6 +646,23 @@ def delete_property(property_id: int, current_user: User = Depends(get_current_u
 def get_market_trends():
     # Return 30 days history and 15 days forecast
     data = market_forecast_model.get_forecast()
+    data["datasets_integrated"] = [
+        {"name": "Smart Invest Realistic Dataset", "records": 25000, "role": "Primary Domestic Land & Property Engine"},
+        {"name": "Dedicated Land Dataset", "records": 500, "role": "Spatial Parcel Coordinates"},
+        {"name": "Global Real Estate Dataset", "records": 147000, "role": "International Benchmark"}
+    ]
+    if hasattr(valuation_model, "realistic_model") and valuation_model.realistic_model.market_stats:
+        ds = valuation_model.realistic_model.market_stats.get("district", {})
+        top_districts = []
+        for dist, st in sorted(ds.items(), key=lambda x: x[1].get("median_roi", 0), reverse=True)[:10]:
+            top_districts.append({
+                "district": dist.title(),
+                "median_price_per_sqft": round(st.get("median_price", 0), 2),
+                "median_roi_pct": round(st.get("median_roi", 0), 2),
+                "demand_score": round(st.get("median_demand", 0), 1),
+                "trend": st.get("trend", "Increasing")
+            })
+        data["district_insights"] = top_districts
     return data
 
 @app.post("/api/market/analyze-image")

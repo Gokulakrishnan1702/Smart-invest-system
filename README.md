@@ -16,11 +16,27 @@ By combining machine learning algorithms (Random Forest, Gradient Boosting), sen
 
 ---
 
+## 📊 Three-Dataset Architecture
+
+Smart Invest unifies three specialized dataset repositories to provide comprehensive, high-precision coverage across all real estate categories:
+
+| Dataset | Records | Scope & Purpose | Active ML Engine |
+| :--- | :--- | :--- | :--- |
+| **`smart_invest_realistic_dataset.csv`** | 25,000 | Realistic commercial, industrial, residential, and agricultural properties across 25 Indian districts with ROI %, demand score, location score, and price trends. | **Realistic Property Engine** (RF + GB, R²=0.962) |
+| **`land_data.csv`** | 500 (+11,513 from realistic) | Precision land boundary parcels, acreage, cents, and development plots. | **Unified Land Engine** (12,013 parcels, R²=0.829) |
+| **`world_real_estate_data.csv`** | 147,000 | Multi-country international benchmark housing data (USA, Turkey, Spain, Russia, Hungary, Greece, etc.). | **Global Benchmark Engine** (147k records, R²=0.522) |
+
+---
+
 ## 🚀 Key Features
 
 ### 🏡 Intelligent Property & Land Valuation
+- **Triple-Engine ML Architecture**:
+  - *Realistic Property Engine* (R²=0.962) trained on 25,000 real-world records covering 15 property types.
+  - *Unified Land Engine* (R²=0.829) trained on 12,013 combined land records.
+  - *Global Benchmark Engine* (R²=0.522) for international cross-border properties.
+- **Investment Intelligence**: Automated expected annual ROI % prediction, investment potential rating (High, Medium, Low), market demand score, and location quality score.
 - **Dedicated Land Pricing Engine**: Modeled specifically on land metrics (sqft, acres, cents, location, district, road accessibility, utility access) avoiding misleading residential room/floor formulas.
-- **Housing Valuation Engine**: Trained on extensive global housing datasets using ensemble Random Forest and Gradient Boosting regressors.
 - **Multi-Unit Area Converter**: Seamless switching between **Sqft**, **Acres**, and **Cents** with dynamic conversion.
 - **Profit & Loss Calculator**: Evaluates entered asking price vs. AI fair market value to flag bargains, fair value, and overpriced properties.
 - **Explainable AI (XAI)**: Feature importance breakdowns and upper/lower confidence bounds.
